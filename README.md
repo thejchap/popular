@@ -6,6 +6,8 @@
 
 Friendly is a social/friendship gem designed for Rails/ActiveRecord models.
 
+### THIS IS A VERY YOUNG GEM. YOU HAVE BEEN WARNED
+
 ## Installation
 
 Add this line to your application's Gemfile:
