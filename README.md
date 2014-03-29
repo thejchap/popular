@@ -1,12 +1,12 @@
-# Friendable [![Build Status](https://travis-ci.org/thejchap/friendable.svg?branch=master)](https://travis-ci.org/thejchap/friendable) [![Code Climate](https://codeclimate.com/github/thejchap/friendable.png)](https://codeclimate.com/github/thejchap/friendable)
+# Friendly [![Build Status](https://travis-ci.org/thejchap/friendable.svg?branch=master)](https://travis-ci.org/thejchap/friendable) [![Code Climate](https://codeclimate.com/github/thejchap/friendable.png)](https://codeclimate.com/github/thejchap/friendable)
 
-Friendable is a social/friendship gem designed for Rails/ActiveRecord models.
+Friendly is a social/friendship gem designed for Rails/ActiveRecord models.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'friendable'
+    gem 'friendly'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install friendable
+    $ gem install friendly
 
 ## Usage
 
