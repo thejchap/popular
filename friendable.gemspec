@@ -22,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "sqlite3", "~> 1.3.3"
-  spec.add_development_dependency "codeclimate-test-reporter", group: :test, require: nil
+  spec.add_development_dependency "codeclimate-test-reporter"
 end
