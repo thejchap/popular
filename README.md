@@ -1,4 +1,4 @@
-# Friendable
+# Friendable [![Build Status](https://travis-ci.org/thejchap/friendable.svg?branch=master)](https://travis-ci.org/thejchap/friendable)
 
 TODO: Write a gem description
 
