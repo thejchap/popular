@@ -1,4 +1,7 @@
-# Friendly [![Build Status](https://travis-ci.org/thejchap/friendly.svg?branch=master)](https://travis-ci.org/thejchap/friendly) [![Code Climate](https://codeclimate.com/github/thejchap/friendly.png)](https://codeclimate.com/github/thejchap/friendly)
+# Friendly
+[![Build Status](https://travis-ci.org/thejchap/friendly.svg?branch=master)](https://travis-ci.org/thejchap/friendly) 
+[![Code Climate](https://codeclimate.com/github/thejchap/friendly.png)](https://codeclimate.com/github/thejchap/friendly)
+[![Code Coverage](https://codeclimate.com/github/thejchap/friendly/coverage.png)](https://codeclimate.com/github/thejchap/friendly)
 
 Friendly is a social/friendship gem designed for Rails/ActiveRecord models.
 
