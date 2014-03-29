@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["thejchap"]
   spec.email         = ["commonmodestudio@gmail.com"]
   spec.summary       = %q{Friendship gem for Rails/ActiveRecord}
-  spec.description   = %q{Friendship gem for Rails/ActiveRecord}
-  spec.homepage      = ""
+  spec.description   = %q{Friendship gem for Rails/ActiveRecord. Friendable saves time when developing social apps}
+  spec.homepage      = "http://thejchap.github.io/friendable"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
