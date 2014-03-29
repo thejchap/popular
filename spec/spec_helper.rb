@@ -2,14 +2,14 @@ require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
 require 'sqlite3'
-require 'friendable'
+require 'friendly'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
-UnfriendableUser = Class.new ActiveRecord::Base
+UnfriendlyUser = Class.new ActiveRecord::Base
 
-class FriendableUser < ActiveRecord::Base
-  friendable
+class FriendlyUser < ActiveRecord::Base
+  friendly
 end
 
 

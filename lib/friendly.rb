@@ -5,13 +5,13 @@ require "active_record"
 # @author Justin Chapman
 #
 # @since 0.0.1
-module Friendable
+module Friendly
 
   if defined? ActiveRecord::Base
-    require "friendable/extenders/friendable"
+    require "friendly/extenders/friendly"
 
     # Extend ActiveRecord with extenders
-    ActiveRecord::Base.extend Friendable::Extenders::Friendable
+    ActiveRecord::Base.extend Friendly::Extenders::Friendly
   end
 
 end

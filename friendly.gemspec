@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'friendable/version'
+require 'friendly/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "friendable"
-  spec.version       = Friendable::VERSION
+  spec.name          = "friendly"
+  spec.version       = Friendly::VERSION
   spec.authors       = ["thejchap"]
   spec.email         = ["commonmodestudio@gmail.com"]
   spec.summary       = %q{Friendship gem for Rails/ActiveRecord}
-  spec.description   = %q{Friendship gem for Rails/ActiveRecord. Friendable saves time when developing social apps}
-  spec.homepage      = "http://thejchap.github.io/friendable"
+  spec.description   = %q{Friendship gem for Rails/ActiveRecord. Friendly saves time when developing social apps}
+  spec.homepage      = "http://thejchap.github.io/Friendly"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
