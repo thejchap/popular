@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Friendable::VERSION
   spec.authors       = ["thejchap"]
   spec.email         = ["commonmodestudio@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Friendship gem for Rails/ActiveRecord}
+  spec.description   = %q{Friendship gem for Rails/ActiveRecord}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -19,11 +19,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rake", "~> 10.2.2"
+  spec.add_development_dependency "rspec", "~> 2.14.1"
   spec.add_development_dependency "sqlite3", "~> 1.3.3"
-  spec.add_development_dependency "codeclimate-test-reporter"
-  spec.add_development_dependency "yard"
-  spec.add_development_dependency "redcarpet"
-  spec.add_development_dependency "inch"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.3.0"
+  spec.add_development_dependency "yard", "~> 0.8.7.4"
+  spec.add_development_dependency "redcarpet", "~> 3.1.1"
+  spec.add_development_dependency "inch", "~> 0.3.3"
 end

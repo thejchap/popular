@@ -1,6 +1,6 @@
 # Friendable [![Build Status](https://travis-ci.org/thejchap/friendable.svg?branch=master)](https://travis-ci.org/thejchap/friendable) [![Code Climate](https://codeclimate.com/github/thejchap/friendable.png)](https://codeclimate.com/github/thejchap/friendable)
 
-TODO: Write a gem description
+Friendable is a social/friendship gem designed for Rails/ActiveRecord models.
 
 ## Installation
 
