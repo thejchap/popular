@@ -6,6 +6,17 @@ shared_examples "a popular model" do
 
       expect( popular_model ).to be_friended_by another_popular_model
     end
+
+    it '#mutual_friends_with? returns false if instances are not mutual friends' do
+      expect( popular_model ).to_not be_mutual_friends_with another_popular_model
+    end
+
+    it '#mutual_friends_with? returns true if instances have befriended eachother' do
+      popular_model.befriend another_popular_model
+      another_popular_model.befriend popular_model
+
+      expect( popular_model ).to be_mutual_friends_with another_popular_model
+    end
   end
 
   describe '.befriend!' do

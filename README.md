@@ -45,20 +45,20 @@ end
 @jackson = User.create name: "Jackson"
 
 # Adding and removing friends
-@sam.friends_with? @jackson   #=> false
-@sam.friended_by? @jackson    #=> false
+@sam.friends_with? @jackson         #=> false
+@sam.friended_by? @jackson          #=> false
 
 @sam.befriend @jackson
-
-@sam.friends_with? @jackson   #=> true
+@sam.friends_with? @jackson         #=> true
 
 @sam.unfriend @jackson
-
-@sam.friends_with? @jackson   #=> false
+@sam.friends_with? @jackson         #=> false
 
 @jackson.befriend @sam
+@sam.friended_by? @jackson          #=> true
 
-@sam.friended_by? @jackson    #=> true
+@sam.befriend @jackson
+@sam.mutual_friends_with? @jackson  #=> true
 ```
 
 ### Callbacks

@@ -68,6 +68,26 @@ module Popular
       end
     end
 
+    # Helper method for determining whether instances are mutual friends
+    # 
+    # @param [Object] popular_model
+    # @return [Boolean] if both instances have befriended eachother
+    #
+    # @example
+    #   user = User.create name: "Justin"
+    #   other_user = User.create name: "Jenny"
+    #
+    #   user.befriend other_user
+    #   other_user.befriend user
+    #
+    #   user.mutual_friends_with? other_user #=> true
+    def mutual_friends_with? popular_model
+      friends_with?( popular_model ) && friended_by?( popular_model )
+    end
+
+    # Helper method for finding whether or not the instance has befriended
+    # another given popular_model
+    # 
     # Helper method for finding whether or not the instance has 
     # been befriended by another given popular_model
     # 
