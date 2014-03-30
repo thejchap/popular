@@ -1,4 +1,5 @@
 # Popular
+[![Gem Version](https://badge.fury.io/rb/popular.png)](http://badge.fury.io/rb/popular)
 [![Build Status](https://travis-ci.org/thejchap/popular.svg?branch=master)](https://travis-ci.org/thejchap/popular)
 [![Code Climate](https://codeclimate.com/github/thejchap/popular.png)](https://codeclimate.com/github/thejchap/popular)
 [![Code Coverage](https://codeclimate.com/github/thejchap/popular/coverage.png)](https://codeclimate.com/github/thejchap/popular)
