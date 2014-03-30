@@ -20,7 +20,8 @@ module Popular
       aliases = {
         befriend: [:follow],
         befriend!: [:follow!],
-        friends_with?: [:following?]
+        friends_with?: [:following?],
+        unfriend: [:unfollow]
       }
 
       aliases.each do |method, links|

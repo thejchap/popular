@@ -90,6 +90,14 @@ shared_examples "a popular model" do
   end
 
   describe '.unfriend' do
+    it 'can be called with .unfollow' do
+      [:follow, :unfollow].each do |method|
+        popular_model.send method, another_popular_model
+      end
+
+      expect( popular_model).to_not be_following another_popular_model
+    end
+
     it 'destroys a friendship' do
       [:befriend, :unfriend].each do |method|
         popular_model.send method, another_popular_model
