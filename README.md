@@ -8,8 +8,6 @@
 
 Popular is a friendship gem designed for Rails/ActiveRecord models.
 
-### THIS IS A VERY YOUNG GEM. YOU HAVE BEEN WARNED
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -24,9 +22,25 @@ Or install it yourself as:
 
     $ gem install popular
 
+### Database Migration
+
+Popular uses a friendships table to store friendship relationships.
+To get up and running, use the following command:
+
+    rails g popular:migration
+    rake db:migrate
+
 ## Usage
 
-TODO: Write usage instructions here
+### Model
+
+To get started using Popular, simply add `popular` to your model, (ie: `app/models/user.rb`)
+
+```ruby
+class User < ActiveRecord::Base
+  popular
+end
+```
 
 ## Contributing
 
