@@ -6,9 +6,7 @@ class PopularModelWithCallbacks < PopularModel
 
       send hook, method_name
 
-      define_method method_name do
-        true
-      end
+      define_method method_name, ->{}
     end
   end
 end
