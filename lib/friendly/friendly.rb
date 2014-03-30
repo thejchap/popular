@@ -17,6 +17,10 @@ module Friendly
       friendships.create friend: new_friend
     end
 
+    def unfriend friend
+      friendships.where( friend: friend ).first.destroy
+    end
+
   end
 
 end

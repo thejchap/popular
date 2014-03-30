@@ -8,4 +8,14 @@ shared_examples "a friendly model" do
     end
   end
 
+  describe '.unfriend' do
+    it 'destroys a friendship' do
+      [:befriend, :unfriend].each do |method|
+        friendly_model.send method, another_friendly_model
+      end
+
+      expect( friendly_model.friends ).to be_empty
+    end
+  end
+
 end
