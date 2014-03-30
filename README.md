@@ -8,9 +8,9 @@
 
 Popular is a friendship gem designed for Rails/ActiveRecord models.
 
-RubyGems: ( https://rubygems.org/gems/popular )
-Website: ( http://thejchap.github.io/popular )
-RDoc: ( http://rubydoc.info/github/thejchap/popular/master/frames )
+- RubyGems: ( https://rubygems.org/gems/popular )
+- Website: ( http://thejchap.github.io/popular )
+- RDoc: ( http://rubydoc.info/github/thejchap/popular/master/frames )
 
 ## Installation
 
