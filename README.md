@@ -51,6 +51,29 @@ end
 @sam.friends_with? @jackson #=> false
 ```
 
+### Callbacks
+
+Popular provides callbacks that are fired around friendship creation. Available callbacks are:
+  - after_befriend
+  - before_befriend
+
+
+```ruby
+class User < ActiveRecord::Base
+  popular
+  after_befriend :notify
+
+  def notify
+    puts "Friendship created successfully"
+  end
+end
+
+@justin = User.create name: "Justin"
+@jenny = User.create name: "Jenny"
+
+@justin.befriend @jenny #=> "Friendship created successfully"
+```
+
 ## Contributing
 
 1. Fork it ( http://github.com/thejchap/popular/fork )
