@@ -16,6 +16,16 @@ module Popular
       [:before_unfriend, :after_unfriend, :before_befriend, :after_befriend].each do |callback|
         send callback
       end
+
+      aliases = {
+        befriend: [:follow],
+        befriend!: [:follow!],
+        friends_with?: [:following?]
+      }
+
+      aliases.each do |method, links|
+        links.each { |linked_method| alias_method( linked_method, method ) }
+      end
     end
 
     # Adds a friend to an instance's friend's list

@@ -20,6 +20,12 @@ shared_examples "a popular model" do
   end
 
   describe '.befriend!' do
+    it 'can be called with .follow!' do
+      popular_model.follow! another_popular_model
+
+      expect( popular_model).to be_following another_popular_model
+    end
+
     it 'creates a one way friendship' do
       popular_model.befriend! another_popular_model
 
@@ -42,6 +48,12 @@ shared_examples "a popular model" do
   end
 
   describe '.befriend' do
+    it 'can be called with .follow' do
+      popular_model.follow another_popular_model
+
+      expect( popular_model).to be_following another_popular_model
+    end
+
 
     context 'successful' do
       it 'triggers before_befriend callback' do
