@@ -1,5 +1,5 @@
 module Popular
-
+  # Namespace for methods included in popular models
   module Popular
 
     extend ActiveSupport::Concern
@@ -83,6 +83,7 @@ module Popular
       friendships.where( friend: popular_model ).any?
     end
 
+    # ClassMethods included in popular models
     module ClassMethods
 
       # before_befriend callback convenience class method

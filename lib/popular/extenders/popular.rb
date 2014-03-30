@@ -2,7 +2,7 @@ module Popular
   # Namespace for classes and modules that handle including the library's modules
   module Extenders
 
-    # Namespace for classes and modules that handle making a given model friendly
+    # Namespace for classes and modules that handle making a given model popular
     module Popular
 
       # Helper method for determining whether or not a model has included
