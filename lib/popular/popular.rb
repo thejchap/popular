@@ -5,6 +5,11 @@ module Popular
     extend ActiveSupport::Concern
 
     included do |base|
+      has_many :followings, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
+      has_many :followeds, through: :followings, source: :friend, source_type: base
+      has_many :inverse_followings, class_name: 'Popular::Friendship', as: :friend, foreign_key: :friend_id
+      has_many :followers, through: :inverse_followings, source: :popular_model, source_type: base
+
       has_many :friendships, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
       has_many :friends, through: :friendships, source_type: base
       has_many :inverse_friendships, class_name: 'Popular::Friendship', as: :friend, foreign_key: :friend_id
@@ -20,8 +25,9 @@ module Popular
       aliases = {
         befriend: [:follow],
         befriend!: [:follow!],
+        unfriend: [:unfollow],
         friends_with?: [:following?],
-        unfriend: [:unfollow]
+        friended_by?: [:followed_by?]
       }
 
       aliases.each do |method, links|

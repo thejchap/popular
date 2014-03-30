@@ -65,6 +65,20 @@ end
 @sam.mutual_friends_with? @jackson  #=> true
 ```
 
+### Aliases
+
+In Popular, `befriend` is synonomous with `follow`, so if it better fits the context of your application, you can use
+follow methods/relations instead. For example:
+
+```ruby
+@sam.follow @jackson
+@sam.following? @jackson          #=> true
+
+@jackson.follow @sam
+@sam.followers.include? @jackson  #=> true
+```
+
+
 ### Callbacks
 
 Popular provides callbacks that are fired around friendship creation. Available callbacks are:

@@ -1,10 +1,19 @@
 shared_examples "a popular model" do
 
   describe 'mutual friendships' do
-    it '.inverse_friends includes popular_models who have added an instance as a friend' do
-      another_popular_model.befriend popular_model
+    describe '.inverse_friends' do
+      it 'includes popular_models who have added an instance as a friend' do
+        another_popular_model.befriend popular_model
 
-      expect( popular_model ).to be_friended_by another_popular_model
+        expect( popular_model ).to be_friended_by another_popular_model
+      end
+
+      it 'can be called with followers' do
+        another_popular_model.follow popular_model
+
+        expect( popular_model ).to be_followed_by another_popular_model
+        expect( popular_model.followers ).to match_array [another_popular_model]
+      end
     end
 
     it '#mutual_friends_with? returns false if instances are not mutual friends' do
@@ -78,7 +87,7 @@ shared_examples "a popular model" do
   end
 
   describe '#friends_with?' do
-    it 'returns true if a popular_model is friends with a given popular_model' do
+    it 'returns false if a popular_model is not friends with a given popular_model' do
       expect( popular_model ).to_not be_friends_with another_popular_model
     end
 
