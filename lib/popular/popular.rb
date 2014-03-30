@@ -7,6 +7,8 @@ module Popular
     included do |base|
       has_many :friendships, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
       has_many :friends, through: :friendships, source_type: base
+      has_many :inverse_friendships, class_name: 'Popular::Friendship', as: :friend, foreign_key: :friend_id
+      has_many :inverse_friends, through: :inverse_friendships, source: :popular_model, source_type: base
 
       include ActiveSupport::Callbacks
       define_callbacks :befriend, :unfriend
@@ -66,7 +68,26 @@ module Popular
       end
     end
 
-    # Helper method for finding whether or not the instance is friends with 
+    # Helper method for finding whether or not the instance has 
+    # been befriended by another given popular_model
+    # 
+    # @param [Object] popular_model
+    # @return [Boolean] if the instance has been friended by another popular_model
+    #
+    # @example
+    #   user = User.create name: "Justin"
+    #   other_user = User.create name: "Jenny"
+    #
+    #   user.friended_by? other_user #=> false
+    #
+    #   other_user.befriend user
+    #
+    #   user.friended_by? other_user #=> true
+    def friended_by? popular_model
+      inverse_friends.include? popular_model
+    end
+
+    # Helper method for finding whether or not the instance has befriended
     # another given popular_model
     # 
     # @param [Object] popular_model

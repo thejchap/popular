@@ -1,5 +1,13 @@
 shared_examples "a popular model" do
 
+  describe 'mutual friendships' do
+    it '.inverse_friends includes popular_models who have added an instance as a friend' do
+      another_popular_model.befriend popular_model
+
+      expect( popular_model ).to be_friended_by another_popular_model
+    end
+  end
+
   describe '.befriend!' do
     it 'creates a one way friendship' do
       popular_model.befriend! another_popular_model
