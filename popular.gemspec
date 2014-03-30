@@ -26,5 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard", "~> 0.8"
   spec.add_development_dependency "redcarpet", "~> 3.1"
   spec.add_development_dependency "inch", "~> 0.3"
-  spec.add_development_dependency "gem-release", '~> 0.7.1'
+  spec.add_development_dependency "gem-release", '~> 0.7'
 end
