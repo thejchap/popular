@@ -20,6 +20,8 @@ describe Popular::Popular do
     let ( :another_popular_model ) { PopularModel.create }
     let ( :popular_model_with_after_befriend_callback ) { PopularModelWithAfterBefriendCallback.create }
     let ( :popular_model_with_before_befriend_callback ) { PopularModelWithBeforeBefriendCallback.create }
+    let ( :popular_model_with_after_unfriend_callback ) { PopularModelWithAfterUnfriendCallback.create }
+    let ( :popular_model_with_before_unfriend_callback ) { PopularModelWithBeforeUnfriendCallback.create }
   end
 
 end

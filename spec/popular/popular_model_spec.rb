@@ -68,6 +68,17 @@ shared_examples "a popular model" do
 
       expect( popular_model).to_not be_friends_with another_popular_model
     end
+
+    it 'triggers after_unfriend callback' do
+      popular_model_with_after_unfriend_callback
+        .should_receive( :callback_worked )
+        .once
+        .and_return true
+
+      [:befriend, :unfriend].each do |method|
+        popular_model_with_after_unfriend_callback.send method, another_popular_model
+      end
+    end
   end
 
 end

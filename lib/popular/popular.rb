@@ -9,9 +9,9 @@ module Popular
       has_many :friends, through: :friendships, source_type: base
 
       include ActiveSupport::Callbacks
-      define_callbacks :befriend
+      define_callbacks :befriend, :unfriend
 
-      [:before_befriend, :after_befriend].each do |callback|
+      [:before_unfriend, :after_unfriend, :before_befriend, :after_befriend].each do |callback|
         send callback
       end
     end
@@ -61,7 +61,9 @@ module Popular
     #
     #   user.friends_with? other_user # => false
     def unfriend friend
-      friendships.where( friend: friend ).first.destroy
+      run_callbacks :unfriend do
+        friendships.where( friend: friend ).first.destroy
+      end
     end
 
     # Helper method for finding whether or not the instance is friends with 
@@ -85,6 +87,52 @@ module Popular
 
     # ClassMethods included in popular models
     module ClassMethods
+
+      # after_unfriend callback convenience class method
+      #
+      # @since 0.4.0
+      #
+      # @example
+      #
+      #   class User < ActiveRecord::Base
+      #     after_unfriend :do_something_amazing
+      #
+      #     def do_something_amazing
+      #       puts name
+      #     end
+      #   end
+      #
+      #   user = User.create name: "Justin"
+      #   another_user = User.create name: "Jenny"
+      #
+      #   user.befriend another_user
+      #   user.unfriend another_user #=> "Justin"
+      def after_unfriend *args, &blk
+        set_callback :unfriend, :after, *args, &blk
+      end
+
+      # before_unfriend callback convenience class method
+      #
+      # @since 0.4.0
+      #
+      # @example
+      #
+      #   class User < ActiveRecord::Base
+      #     before_unfriend :do_something_amazing
+      #
+      #     def do_something_amazing
+      #       puts name
+      #     end
+      #   end
+      #
+      #   user = User.create name: "Justin"
+      #   another_user = User.create name: "Jenny"
+      #
+      #   user.befriend another_user
+      #   user.unfriend another_user #=> "Justin"
+      def before_unfriend *args, &blk
+        set_callback :unfriend, :before, *args, &blk
+      end
 
       # before_befriend callback convenience class method
       #
