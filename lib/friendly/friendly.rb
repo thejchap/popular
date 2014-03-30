@@ -27,6 +27,14 @@ module Friendly
       friendships.where( friend: friend ).first.destroy
     end
 
+    # Helper method for finding whether or not the instance is friends with another given friendly_model
+    # 
+    # @param [FriendlyModel] a friendly_model
+    # @return [Boolean] if the instance has friendly_model as a friend
+    def friends_with? friendly_model
+      friendships.where( friend: friendly_model ).any?
+    end
+
   end
 
 end
