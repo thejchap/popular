@@ -3,7 +3,7 @@ rvm:
 - 2.1.0
 addons:
   code_climate:
-    repo_token: 961309bcd7fffdccfec595d69b0d054b56308dcc414edad136f2c153bba245f4
+    repo_token: 4a0d77600a79523f404381dc1cc4bbfb7bf86f897d15b4aa80311db4aad20332
 deploy:
   provider: rubygems
   api_key:
