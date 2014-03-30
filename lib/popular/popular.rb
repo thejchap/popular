@@ -87,6 +87,8 @@ module Popular
 
       # before_befriend callback convenience class method
       #
+      # @since 0.3.0
+      #
       # @example
       #
       #   class User < ActiveRecord::Base
@@ -106,6 +108,8 @@ module Popular
       end
 
       # after_befriend callback convenience class method
+      #
+      # @since 0.3.0
       #
       # @example
       #
