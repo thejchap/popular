@@ -6,5 +6,7 @@ addons:
     repo_token: 4a0d77600a79523f404381dc1cc4bbfb7bf86f897d15b4aa80311db4aad20332
 deploy:
   provider: rubygems
+  on:
+    tags: true
   api_key:
     secure: lxiDHlutKFERFmsSzhqoGtVGRk06wQIv3Gp7GnvaYdbZzC2tH35tvW4RFxdSWPU8Fp02M8Qc89gV+T0IbAigFZEVp3F7IN4DM09oJWGJ4G1XKykYV0c5aFrEfcPVs4rzxletQanObqbVZqBj/+pCaGA1WvwqojL9Jg6a/w/LhyE=
