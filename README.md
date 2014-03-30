@@ -100,8 +100,8 @@ end
 
 If Popular isn't quite what you're looking for, here are some other useful gems in the same category:
 
-1. Amistad ( https://github.com/raw1z/amistad )
-2. Friendable ( https://github.com/yuki24/friendable )
+- Amistad ( https://github.com/raw1z/amistad )
+- Friendable ( https://github.com/yuki24/friendable )
 
 *Disclaimer: I have not used either of the above gems*
 
