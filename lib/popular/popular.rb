@@ -85,11 +85,42 @@ module Popular
 
     module ClassMethods
 
-      # Callback convenience methods
+      # before_befriend callback convenience class method
+      #
+      # @example
+      #
+      #   class User < ActiveRecord::Base
+      #     before_befriend :do_something_amazing
+      #
+      #     def do_something_amazing
+      #       puts name
+      #     end
+      #   end
+      #
+      #   user = User.create name: "Justin"
+      #   another_user = User.create name: "Jenny"
+      #
+      #   user.befriend another_user #=> "Justin"
       def before_befriend *args, &blk
         set_callback :befriend, :before, *args, &blk
       end
 
+      # after_befriend callback convenience class method
+      #
+      # @example
+      #
+      #   class User < ActiveRecord::Base
+      #     after_befriend :do_something_amazing
+      #
+      #     def do_something_amazing
+      #       puts name
+      #     end
+      #   end
+      #
+      #   user = User.create name: "Justin"
+      #   another_user = User.create name: "Jenny"
+      #
+      #   user.befriend another_user #=> "Justin"
       def after_befriend *args, &blk
         set_callback :befriend, :after, *args, &blk
       end

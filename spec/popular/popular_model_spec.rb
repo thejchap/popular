@@ -7,6 +7,15 @@ shared_examples "a popular model" do
       expect( popular_model).to be_friends_with another_popular_model
     end
 
+    it 'triggers before_befriend callback' do
+        popular_model_with_before_befriend_callback
+          .should_receive( :callback_worked )
+          .once
+          .and_return true
+
+        popular_model_with_before_befriend_callback.befriend! another_popular_model
+    end
+
     context 'successful' do
       it 'triggers after_befriend callback' do
         popular_model_with_after_befriend_callback
