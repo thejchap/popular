@@ -1,1 +1,0 @@
-RandomClass = Class.new
