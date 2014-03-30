@@ -5,14 +5,14 @@ require "active_record"
 # @author Justin Chapman
 #
 # @since 0.0.1
-module Friendly
+module Popular
 
   if defined? ActiveRecord::Base
-    require "friendly/extenders/friendly"
-    require "friendly/friendship"
+    require "popular/extenders/popular"
+    require "popular/friendship"
 
     # Extend ActiveRecord with extenders
-    ActiveRecord::Base.extend Friendly::Extenders::Friendly
+    ActiveRecord::Base.extend Popular::Extenders::Popular
   end
 
 end

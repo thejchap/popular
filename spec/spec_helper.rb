@@ -4,25 +4,25 @@ if ENV['CODECLIMATE_REPO_TOKEN']
 end
 
 require 'sqlite3'
-require 'friendly'
+require 'popular'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
 ActiveRecord::Schema.define version: 1 do
 
   create_table :friendships do |t|
-    t.references :friendly_model, polymorphic: true,  null: false
+    t.references :popular_model, polymorphic: true,  null: false
     t.references :friend, polymorphic: true, null: false
   end
 
-  create_table :friendly_models
+  create_table :popular_models
 
 end
 
-UnfriendlyModel = Class.new ActiveRecord::Base
+UnpopularModel = Class.new ActiveRecord::Base
 
-class FriendlyModel < ActiveRecord::Base
-  friendly
+class PopularModel < ActiveRecord::Base
+  popular
 end
 
 RSpec.configure do |config|
@@ -30,7 +30,7 @@ RSpec.configure do |config|
 end
 
 def clean_database
-  [FriendlyModel, Friendly::Friendship].each do |model|
+  [PopularModel, Popular::Friendship].each do |model|
     ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
   end
 end

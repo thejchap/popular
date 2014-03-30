@@ -1,14 +1,15 @@
-module Friendly
+module Popular
   # Namespace for classes and modules that handle including the library's modules
   module Extenders
 
     # Namespace for classes and modules that handle making a given model friendly
-    module Friendly
+    module Popular
 
-      # Helper method for determining whether or not a model is friendly
+      # Helper method for determining whether or not a model has included
+      # the Popular module
       #
-      # @return [Boolean] whether or not the including class is friendly
-      def friendly?
+      # @return [Boolean] whether or not the including class has included the module
+      def popular?
         false
       end
 
@@ -16,12 +17,12 @@ module Friendly
       #
       # @overload friendable *args
       #   @param [Hash] options
-      def friendly *args
-        require 'friendly/friendly'
-        include ::Friendly::Friendly
+      def popular *args
+        require 'popular/popular'
+        include ::Popular::Popular
         
         class_eval do
-          def self.friendly?
+          def self.popular?
             true
           end
         end
