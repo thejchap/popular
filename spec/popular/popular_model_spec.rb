@@ -8,22 +8,16 @@ shared_examples "a popular model" do
     end
 
     it 'triggers before_befriend callback' do
-        popular_model_with_before_befriend_callback
-          .should_receive( :callback_worked )
-          .once
-          .and_return true
+      ensure_callback_fired_on popular_model_with_callbacks, :before_befriend_callback
 
-        popular_model_with_before_befriend_callback.befriend! another_popular_model
+      popular_model_with_callbacks.befriend! another_popular_model
     end
 
     context 'successful' do
       it 'triggers after_befriend callback' do
-        popular_model_with_after_befriend_callback
-          .should_receive( :callback_worked )
-          .once
-          .and_return true
+        ensure_callback_fired_on popular_model_with_callbacks, :after_befriend_callback
 
-        popular_model_with_after_befriend_callback.befriend! another_popular_model
+        popular_model_with_callbacks.befriend! another_popular_model
       end
     end
   end
@@ -31,13 +25,16 @@ shared_examples "a popular model" do
   describe '.befriend' do
 
     context 'successful' do
-      it 'triggers after_befriend callback' do
-        popular_model_with_after_befriend_callback
-          .should_receive( :callback_worked )
-          .once
-          .and_return true
+      it 'triggers before_befriend callback' do
+        ensure_callback_fired_on popular_model_with_callbacks, :before_befriend_callback
 
-        popular_model_with_after_befriend_callback.befriend another_popular_model
+        popular_model_with_callbacks.befriend another_popular_model
+      end
+
+      it 'triggers after_befriend callback' do
+        ensure_callback_fired_on popular_model_with_callbacks, :after_befriend_callback
+
+        popular_model_with_callbacks.befriend another_popular_model
       end
 
       it 'creates a one way friendship' do
@@ -53,6 +50,7 @@ shared_examples "a popular model" do
     it 'returns true if a popular_model is friends with a given popular_model' do
       expect( popular_model ).to_not be_friends_with another_popular_model
     end
+
     it 'returns true if a popular_model is friends with a given popular_model' do
       popular_model.befriend another_popular_model
 
@@ -69,16 +67,24 @@ shared_examples "a popular model" do
       expect( popular_model).to_not be_friends_with another_popular_model
     end
 
-    it 'triggers after_unfriend callback' do
-      popular_model_with_after_unfriend_callback
-        .should_receive( :callback_worked )
-        .once
-        .and_return true
+    it 'triggers before_unfriend callback' do
+      ensure_callback_fired_on popular_model_with_callbacks, :before_unfriend_callback
 
       [:befriend, :unfriend].each do |method|
-        popular_model_with_after_unfriend_callback.send method, another_popular_model
+        popular_model_with_callbacks.send method, another_popular_model
+      end
+    end
+
+    it 'triggers after_unfriend callback' do
+      ensure_callback_fired_on popular_model_with_callbacks, :after_unfriend_callback
+
+      [:befriend, :unfriend].each do |method|
+        popular_model_with_callbacks.send method, another_popular_model
       end
     end
   end
 
+  def ensure_callback_fired_on model, method
+    model.send( :should_receive, method ).once.and_return true
+  end
 end
