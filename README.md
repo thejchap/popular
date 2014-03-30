@@ -92,6 +92,21 @@ end
 @justin.unfriend @jenny #=> ":("
 ```
 
+## Related gems
+
+If Popular isn't quite what you're looking for, here are some other useful gems in the same category:
+1. Amistad ( https://github.com/raw1z/amistad )
+2. Friendable ( https://github.com/yuki24/friendable )
+
+*Disclaimer: I have not used either of the above gems*
+
+
+## Resources
+
+Popular was heavily inspired by this screencast: ( http://railscasts.com/episodes/163-self-referential-association?view=asciicast )
+
+
+
 ## Contributing
 
 1. Fork it ( http://github.com/thejchap/popular/fork )
