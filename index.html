@@ -105,6 +105,19 @@ rake db:migrate
 </pre></div>
 
 <h3>
+<a name="aliases" class="anchor" href="#aliases"><span class="octicon octicon-link"></span></a>Aliases</h3>
+
+<p>In Popular, <code>befriend</code> is synonomous with <code>follow</code>, so if it better fits the context of your application, you can use
+follow methods/relations instead. For example:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="vi">@sam</span><span class="o">.</span><span class="n">follow</span> <span class="vi">@jackson</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">following?</span> <span class="vi">@jackson</span>          <span class="c1">#=&gt; true</span>
+
+<span class="vi">@jackson</span><span class="o">.</span><span class="n">follow</span> <span class="vi">@sam</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">followers</span><span class="o">.</span><span class="n">include?</span> <span class="vi">@jackson</span>  <span class="c1">#=&gt; true</span>
+</pre></div>
+
+<h3>
 <a name="callbacks" class="anchor" href="#callbacks"><span class="octicon octicon-link"></span></a>Callbacks</h3>
 
 <p>Popular provides callbacks that are fired around friendship creation. Available callbacks are:</p>
@@ -140,10 +153,10 @@ rake db:migrate
 
 <p>If Popular isn't quite what you're looking for, here are some other useful gems in the same category:</p>
 
-<ol>
+<ul>
 <li>Amistad ( <a href="https://github.com/raw1z/amistad">https://github.com/raw1z/amistad</a> )</li>
 <li>Friendable ( <a href="https://github.com/yuki24/friendable">https://github.com/yuki24/friendable</a> )</li>
-</ol><p><em>Disclaimer: I have not used either of the above gems</em></p>
+</ul><p><em>Disclaimer: I have not used either of the above gems</em></p>
 
 <h2>
 <a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
