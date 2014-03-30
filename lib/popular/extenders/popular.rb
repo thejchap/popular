@@ -15,7 +15,7 @@ module Popular
 
       # Includes the module in a given class
       #
-      # @overload friendable *args
+      # @overload popular *args
       #   @param [Hash] options
       def popular *args
         require 'popular/popular'
