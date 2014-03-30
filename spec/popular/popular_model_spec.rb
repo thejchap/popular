@@ -1,5 +1,13 @@
 shared_examples "a popular model" do
 
+  describe '.befriend!' do
+    it 'creates a one way friendship' do
+      popular_model.befriend! another_popular_model
+
+      expect( popular_model.friends ).to match_array [another_popular_model]
+    end
+  end
+
   describe '.befriend' do
     it 'creates a one way friendship' do
       popular_model.befriend another_popular_model

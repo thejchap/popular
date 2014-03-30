@@ -20,6 +20,14 @@ module Popular
       friendships.create friend: new_friend
     end
 
+    # Adds a friend to an instance's friend's list
+    # Similar to .befriend, but will raise an error if the operation is not successful
+    # 
+    # @param [PopularModel] a popular_model that the instance is not already friends with
+    def befriend! new_friend
+      friendships.create! friend: new_friend
+    end
+
     # Removes a friend from an instance's friend's list
     # 
     # @param [PopularModel] a popular_model in this instance's friends list
