@@ -59,15 +59,22 @@ end
 Popular provides callbacks that are fired around friendship creation. Available callbacks are:
   - after_befriend
   - before_befriend
+  - after_unfriend
+  - before_unfriend
 
 
 ```ruby
 class User < ActiveRecord::Base
   popular
-  after_befriend :notify
+  after_befriend :notify_friendship_created
+  after_unfriend :notify_unfriended
 
-  def notify
+  def notify_friendship_created
     puts "Friendship created successfully"
+  end
+
+  def notify_unfriended
+    puts ":("
   end
 end
 
@@ -75,6 +82,7 @@ end
 @jenny = User.create name: "Jenny"
 
 @justin.befriend @jenny #=> "Friendship created successfully"
+@justin.unfriend @jenny #=> ":("
 ```
 
 ## Contributing
