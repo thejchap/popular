@@ -9,6 +9,7 @@ module Friendly
 
   if defined? ActiveRecord::Base
     require "friendly/extenders/friendly"
+    require "friendly/friendship"
 
     # Extend ActiveRecord with extenders
     ActiveRecord::Base.extend Friendly::Extenders::Friendly

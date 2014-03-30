@@ -1,14 +1,13 @@
 module Friendly
-
   # Namespace for classes and modules that handle including the library's modules
   module Extenders
 
-    # Namespace for classes and modules that handle making a given model friendable
+    # Namespace for classes and modules that handle making a given model friendly
     module Friendly
 
-      # Helper method for determining whether or not a model is friendable
+      # Helper method for determining whether or not a model is friendly
       #
-      # @return [Boolean] whether or not the including class is friendable
+      # @return [Boolean] whether or not the including class is friendly
       def friendly?
         false
       end
@@ -19,6 +18,7 @@ module Friendly
       #   @param [Hash] options
       def friendly *args
         require 'friendly/friendly'
+        include ::Friendly::Friendly
         
         class_eval do
           def self.friendly?
@@ -29,5 +29,4 @@ module Friendly
 
     end
   end
-
 end

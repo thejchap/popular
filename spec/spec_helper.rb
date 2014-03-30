@@ -8,13 +8,29 @@ require 'friendly'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
-UnfriendlyUser = Class.new ActiveRecord::Base
+ActiveRecord::Schema.define version: 1 do
 
-class FriendlyUser < ActiveRecord::Base
+  create_table :friendships do |t|
+    t.references :friendly_model, polymorphic: true,  null: false
+    t.references :friend, polymorphic: true, null: false
+  end
+
+  create_table :friendly_models
+
+end
+
+UnfriendlyModel = Class.new ActiveRecord::Base
+
+class FriendlyModel < ActiveRecord::Base
   friendly
 end
 
-
 RSpec.configure do |config|
   config.order = 'random'
+end
+
+def clean_database
+  [FriendlyModel, Friendly::Friendship].each do |model|
+    ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
+  end
 end
