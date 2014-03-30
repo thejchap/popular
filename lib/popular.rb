@@ -3,8 +3,6 @@ require "active_record"
 # Namespace for classes and modules that handle friendship related tasks
 #
 # @author Justin Chapman
-#
-# @since 0.0.1
 module Popular
 
   if defined? ActiveRecord::Base

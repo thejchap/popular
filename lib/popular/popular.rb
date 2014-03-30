@@ -103,15 +103,13 @@ module Popular
     #
     #   user.friends_with? other_user #=> true
     def friends_with? popular_model
-      friendships.where( friend: popular_model ).any?
+      friends.include? popular_model
     end
 
     # ClassMethods included in popular models
     module ClassMethods
 
       # after_unfriend callback convenience class method
-      #
-      # @since 0.4.0
       #
       # @example
       #
@@ -134,8 +132,6 @@ module Popular
 
       # before_unfriend callback convenience class method
       #
-      # @since 0.4.0
-      #
       # @example
       #
       #   class User < ActiveRecord::Base
@@ -157,8 +153,6 @@ module Popular
 
       # before_befriend callback convenience class method
       #
-      # @since 0.3.0
-      #
       # @example
       #
       #   class User < ActiveRecord::Base
@@ -178,8 +172,6 @@ module Popular
       end
 
       # after_befriend callback convenience class method
-      #
-      # @since 0.3.0
       #
       # @example
       #
