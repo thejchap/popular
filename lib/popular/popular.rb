@@ -147,10 +147,12 @@ module Popular
     module ClassMethods
 
       # after_unfriend callback convenience class method
+      # Fired after a popular_model unfriends another popular_model
       #
       # @example
       #
       #   class User < ActiveRecord::Base
+      #     popular
       #     after_unfriend :do_something_amazing
       #
       #     def do_something_amazing
@@ -168,10 +170,12 @@ module Popular
       end
 
       # before_unfriend callback convenience class method
+      # Fired before a popular_model unfriends another popular_model
       #
       # @example
       #
       #   class User < ActiveRecord::Base
+      #     popular
       #     before_unfriend :do_something_amazing
       #
       #     def do_something_amazing
@@ -189,10 +193,12 @@ module Popular
       end
 
       # before_befriend callback convenience class method
+      # Fired before a popular model befriends another popular_model
       #
       # @example
       #
       #   class User < ActiveRecord::Base
+      #     popular
       #     before_befriend :do_something_amazing
       #
       #     def do_something_amazing
@@ -209,10 +215,12 @@ module Popular
       end
 
       # after_befriend callback convenience class method
+      # Fired after a popular_model befriends another popular_model
       #
       # @example
       #
       #   class User < ActiveRecord::Base
+      #     popular
       #     after_befriend :do_something_amazing
       #
       #     def do_something_amazing
