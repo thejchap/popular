@@ -40,6 +40,15 @@ To get started using Popular, simply add `popular` to your model, (ie: `app/mode
 class User < ActiveRecord::Base
   popular
 end
+
+@sam = User.create name: "Samuel"
+@jackson = User.create name: "Jackson"
+
+@sam.friends_with? @jackson #=> false
+@sam.befriend @jackson
+@sam.friends_with? @jackson #=> true
+@sam.unfriend @jackson
+@sam.friends_with? @jackson #=> false
 ```
 
 ## Contributing
