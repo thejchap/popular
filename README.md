@@ -58,7 +58,7 @@ end
 
 @jackson.befriend @sam
 
-@sam.friended_by? @jacson     #=> true
+@sam.friended_by? @jackson    #=> true
 ```
 
 ### Callbacks
