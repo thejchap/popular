@@ -83,11 +83,14 @@ rake db:migrate
 <span class="vi">@sam</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Samuel"</span>
 <span class="vi">@jackson</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Jackson"</span>
 
-<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; false</span>
+<span class="c1"># Adding and removing friends</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span>   <span class="c1">#=&gt; false</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">length</span>           <span class="c1">#=&gt; 0</span>
 <span class="vi">@sam</span><span class="o">.</span><span class="n">befriend</span> <span class="vi">@jackson</span>
-<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; true</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span>   <span class="c1">#=&gt; true</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">length</span>           <span class="c1">#=&gt; 1</span>
 <span class="vi">@sam</span><span class="o">.</span><span class="n">unfriend</span> <span class="vi">@jackson</span>
-<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; false</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span>   <span class="c1">#=&gt; false</span>
 </pre></div>
 
 <h3>
@@ -98,12 +101,19 @@ rake db:migrate
 <ul>
 <li>after_befriend</li>
 <li>before_befriend</li>
+<li>after_unfriend</li>
+<li>before_unfriend</li>
 </ul><div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">popular</span>
-  <span class="n">after_befriend</span> <span class="ss">:notify</span>
+  <span class="n">after_befriend</span> <span class="ss">:notify_friendship_created</span>
+  <span class="n">after_unfriend</span> <span class="ss">:notify_unfriended</span>
 
-  <span class="k">def</span> <span class="nf">notify</span>
+  <span class="k">def</span> <span class="nf">notify_friendship_created</span>
     <span class="nb">puts</span> <span class="s2">"Friendship created successfully"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">notify_unfriended</span>
+    <span class="nb">puts</span> <span class="s2">":("</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
@@ -111,6 +121,7 @@ rake db:migrate
 <span class="vi">@jenny</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Jenny"</span>
 
 <span class="vi">@justin</span><span class="o">.</span><span class="n">befriend</span> <span class="vi">@jenny</span> <span class="c1">#=&gt; "Friendship created successfully"</span>
+<span class="vi">@justin</span><span class="o">.</span><span class="n">unfriend</span> <span class="vi">@jenny</span> <span class="c1">#=&gt; ":("</span>
 </pre></div>
 
 <h2>
