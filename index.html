@@ -35,12 +35,10 @@
 <a href="https://travis-ci.org/thejchap/popular"><img src="https://travis-ci.org/thejchap/popular.svg?branch=master" alt="Build Status"></a>
 <a href="https://codeclimate.com/github/thejchap/popular"><img src="https://codeclimate.com/github/thejchap/popular.png" alt="Code Climate"></a>
 <a href="https://codeclimate.com/github/thejchap/popular"><img src="https://codeclimate.com/github/thejchap/popular/coverage.png" alt="Code Coverage"></a>
+<a href="http://inch-pages.github.io/github/thejchap/popular"><img src="http://inch-pages.github.io/github/thejchap/popular.png" alt="Inline docs"></a>
 <a href="https://gemnasium.com/thejchap/popular"><img src="https://gemnasium.com/thejchap/popular.svg" alt="Dependency Status"></a></p>
 
 <p>Popular is a friendship gem designed for Rails/ActiveRecord models.</p>
-
-<h3>
-<a name="this-is-a-very-young-gem-you-have-been-warned" class="anchor" href="#this-is-a-very-young-gem-you-have-been-warned"><span class="octicon octicon-link"></span></a>THIS IS A VERY YOUNG GEM. YOU HAVE BEEN WARNED</h3>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -60,16 +58,66 @@
 <pre><code>$ gem install popular
 </code></pre>
 
+<h3>
+<a name="database-migration" class="anchor" href="#database-migration"><span class="octicon octicon-link"></span></a>Database Migration</h3>
+
+<p>Popular uses a friendships table to store friendship relationships.
+To get up and running, use the following command:</p>
+
+<pre><code>rails g popular:migration
+rake db:migrate
+</code></pre>
+
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<h3>
+<a name="model" class="anchor" href="#model"><span class="octicon octicon-link"></span></a>Model</h3>
+
+<p>To get started using Popular, simply add <code>popular</code> to your model, (ie: <code>app/models/user.rb</code>)</p>
+
+<div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">popular</span>
+<span class="k">end</span>
+
+<span class="vi">@sam</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Samuel"</span>
+<span class="vi">@jackson</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Jackson"</span>
+
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; false</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">befriend</span> <span class="vi">@jackson</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; true</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">unfriend</span> <span class="vi">@jackson</span>
+<span class="vi">@sam</span><span class="o">.</span><span class="n">friends_with?</span> <span class="vi">@jackson</span> <span class="c1">#=&gt; false</span>
+</pre></div>
+
+<h3>
+<a name="callbacks" class="anchor" href="#callbacks"><span class="octicon octicon-link"></span></a>Callbacks</h3>
+
+<p>Popular provides callbacks that are fired around friendship creation. Available callbacks are:</p>
+
+<ul>
+<li>after_befriend</li>
+<li>before_befriend</li>
+</ul><div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">popular</span>
+  <span class="n">after_befriend</span> <span class="ss">:notify</span>
+
+  <span class="k">def</span> <span class="nf">notify</span>
+    <span class="nb">puts</span> <span class="s2">"Friendship created successfully"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="vi">@justin</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Justin"</span>
+<span class="vi">@jenny</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">create</span> <span class="nb">name</span><span class="p">:</span> <span class="s2">"Jenny"</span>
+
+<span class="vi">@justin</span><span class="o">.</span><span class="n">befriend</span> <span class="vi">@jenny</span> <span class="c1">#=&gt; "Friendship created successfully"</span>
+</pre></div>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <ol>
-<li>Fork it ( <a href="http://github.com/">http://github.com/</a>/popular/fork )</li>
+<li>Fork it ( <a href="http://github.com/thejchap/popular/fork">http://github.com/thejchap/popular/fork</a> )</li>
 <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
@@ -82,6 +130,16 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-49531567-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
