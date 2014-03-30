@@ -46,12 +46,19 @@ end
 
 # Adding and removing friends
 @sam.friends_with? @jackson   #=> false
-@sam.friends.length           #=> 0
+@sam.friended_by? @jackson    #=> false
+
 @sam.befriend @jackson
+
 @sam.friends_with? @jackson   #=> true
-@sam.friends.length           #=> 1
+
 @sam.unfriend @jackson
+
 @sam.friends_with? @jackson   #=> false
+
+@jackson.befriend @sam
+
+@sam.friended_by? @jacson     #=> true
 ```
 
 ### Callbacks
