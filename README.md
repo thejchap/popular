@@ -1,9 +1,5 @@
 # Popular
-[![Build Status](https://travis-ci.org/thejchap/friendly.svg?branch=master)](https://travis-ci.org/thejchap/friendly) 
-[![Code Climate](https://codeclimate.com/github/thejchap/friendly.png)](https://codeclimate.com/github/thejchap/friendly)
-[![Code Coverage](https://codeclimate.com/github/thejchap/friendly/coverage.png)](https://codeclimate.com/github/thejchap/friendly)
-[![Inline docs](http://inch-pages.github.io/github/thejchap/friendly.png)](http://inch-pages.github.io/github/thejchap/friendly)
-[![Dependency Status](https://gemnasium.com/thejchap/friendly.svg)](https://gemnasium.com/thejchap/friendly)
+[![Dependency Status](https://gemnasium.com/thejchap/popular.svg)](https://gemnasium.com/thejchap/popular)
 
 Popular is a friendship gem designed for Rails/ActiveRecord models.
 
