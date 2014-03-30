@@ -6,6 +6,8 @@ end
 require 'sqlite3'
 require 'popular'
 
+Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
+
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
 ActiveRecord::Schema.define version: 1 do
@@ -17,12 +19,6 @@ ActiveRecord::Schema.define version: 1 do
 
   create_table :popular_models
 
-end
-
-UnpopularModel = Class.new ActiveRecord::Base
-
-class PopularModel < ActiveRecord::Base
-  popular
 end
 
 RSpec.configure do |config|

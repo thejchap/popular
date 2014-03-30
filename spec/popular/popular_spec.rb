@@ -15,7 +15,9 @@ describe Popular::Popular do
   end
 
   it_behaves_like 'a popular model' do
+    let ( :random_object ) { RandomClass.new }
     let ( :popular_model ) { PopularModel.create }
+    let ( :popular_model_with_after_befriend_callback ) { PopularModelWithAfterBefriendCallback.create }
     let ( :another_popular_model ) { PopularModel.create }
   end
 

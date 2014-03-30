@@ -2,15 +2,18 @@ module Popular
 
   module Popular
 
-    def self.included base
+    extend ActiveSupport::Concern
 
-      base.class_eval do
+    included do |base|
+      has_many :friendships, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
+      has_many :friends, through: :friendships, source_type: base
 
-        has_many :friendships, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
-        has_many :friends, through: :friendships, source_type: base
+      include ActiveSupport::Callbacks
+      define_callbacks :befriend
 
+      [:before_befriend, :after_befriend].each do |callback|
+        send callback
       end
-
     end
 
     # Adds a friend to an instance's friend's list
@@ -24,7 +27,9 @@ module Popular
     #
     #   user.friends_with? other_user #=> true
     def befriend new_friend
-      friendships.create friend: new_friend
+      run_callbacks :befriend do
+        friendships.create friend: new_friend
+      end
     end
 
     # Adds a friend to an instance's friend's list
@@ -36,10 +41,12 @@ module Popular
     #   user = User.create name: "Justin"
     #   other_user = User.create name: "Jenny"
     #   user.befriend! other_user
-    #   user.reload
+    #
     #   user.friends_with? other_user # => true
     def befriend! new_friend
-      friendships.create! friend: new_friend
+      run_callbacks :befriend do
+        friendships.create! friend: new_friend
+      end
     end
 
     # Removes a friend from an instance's friend's list
@@ -76,6 +83,17 @@ module Popular
       friendships.where( friend: popular_model ).any?
     end
 
+    module ClassMethods
+
+      # Callback convenience methods
+      def before_befriend *args, &blk
+        set_callback :befriend, :before, *args, &blk
+      end
+
+      def after_befriend *args, &blk
+        set_callback :befriend, :after, *args, &blk
+      end
+    end
   end
 
 end
