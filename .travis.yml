@@ -8,7 +8,7 @@ deploy:
   provider: rubygems
   api_key:
     secure: lxiDHlutKFERFmsSzhqoGtVGRk06wQIv3Gp7GnvaYdbZzC2tH35tvW4RFxdSWPU8Fp02M8Qc89gV+T0IbAigFZEVp3F7IN4DM09oJWGJ4G1XKykYV0c5aFrEfcPVs4rzxletQanObqbVZqBj/+pCaGA1WvwqojL9Jg6a/w/LhyE=
-  gem: friendly
+  gem: popular
   on:
     tags: true
-    repo: thejchap/friendly
+    repo: thejchap/popular
