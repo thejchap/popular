@@ -1,4 +1,5 @@
 module Popular
+
   # Namespace for methods included in popular models
   module Popular
 

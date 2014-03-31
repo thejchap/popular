@@ -17,6 +17,7 @@ module Popular
       #
       # @overload popular *args
       #   @param [Hash] options
+      #   @option args [Boolean] :friendship_profile whether or not friendships should create a friendship_profile
       def popular *args
         require 'popular/popular'
         include ::Popular::Popular

@@ -110,6 +110,33 @@ end
 @justin.unfriend @jenny #=> ":("
 ```
 
+### Customization
+
+Popular is intended to provide basic utilities around self-referential relationships in social apps.
+Often, more customization is necessary. If you would like to store more information around the friendship,
+Popular provides a hook to connect its `friendship` model to a user defined `friendship_profile` model. 
+This allows Popular to remain somewhat lightweight and factor out only the code that is repeated  alot between apps,
+while allowing flexibility where it is needed.
+
+Do to this, create a `FriendshipProfile` model that belongs to `friendship`, and has whatever custom attributes
+you want
+
+```ruby
+rails g model FriendshipProfile friendship:belongs_to meeting_location:string meeting_latitude:float meeting_longitude:float
+rake db:migrate
+```
+
+Then, in your Popular model, just set the `friendship_profile` option to true:
+
+```ruby
+class User < ActiveRecord::Base
+  popular friendship_profile: true
+end
+```
+
+Now, everytime a `friendship` is created, an accompanying `friendship_profile` will be attached to it, allowing you to define
+as many custom attributes as you wish in a separate table
+
 ## Related gems
 
 If Popular isn't quite what you're looking for, here are some other useful gems in the same category:
