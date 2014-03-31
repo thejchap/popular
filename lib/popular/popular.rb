@@ -145,6 +145,7 @@ module Popular
 
     # ClassMethods included in popular models
     module ClassMethods
+      attr_accessor :friendship_profile
 
       # after_unfriend callback convenience class method
       # Fired after a popular_model unfriends another popular_model

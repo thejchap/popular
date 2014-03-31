@@ -18,6 +18,10 @@ ActiveRecord::Schema.define version: 1 do
   end
 
   create_table :popular_models
+  create_table :custom_popular_models
+  create_table :friendship_profiles do |t|
+    t.references :friendship
+  end
 
 end
 
@@ -26,7 +30,7 @@ RSpec.configure do |config|
 end
 
 def clean_database
-  [PopularModel, Popular::Friendship].each do |model|
+  [CustomPopularModel, PopularModel, Popular::Friendship].each do |model|
     ActiveRecord::Base.connection.execute "DELETE FROM #{model.table_name}"
   end
 end

@@ -20,7 +20,11 @@ module Popular
       def popular *args
         require 'popular/popular'
         include ::Popular::Popular
-        
+
+        args.extract_options!.each do |key, val|
+          send "#{key}=", val
+        end
+
         class_eval do
           def self.popular?
             true
