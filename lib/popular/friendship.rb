@@ -19,7 +19,7 @@ module Popular
     private
 
     def create_friendship_profile!
-      if defined? FriendshipProfile
+      if defined? ::FriendshipProfile
         super
       else
         warn "You have set friendship_profile: true in your popular model, however no FriendshipProfile model exists"
