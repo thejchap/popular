@@ -148,6 +148,32 @@ follow methods/relations instead. For example:</p>
 <span class="vi">@justin</span><span class="o">.</span><span class="n">unfriend</span> <span class="vi">@jenny</span> <span class="c1">#=&gt; ":("</span>
 </pre></div>
 
+<h3>
+<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h3>
+
+<p>Popular is intended to provide basic utilities around self-referential relationships in social apps.
+Often, more customization is necessary. If you would like to store more information around the friendship,
+Popular provides a hook to connect its <code>friendship</code> model to a user defined <code>friendship_profile</code> model. 
+This allows Popular to remain somewhat lightweight and factor out only the code that is repeated  alot between apps,
+while allowing flexibility where it is needed.</p>
+
+<p>Do to this, create a <code>FriendshipProfile</code> model that belongs to <code>friendship</code>, and has whatever custom attributes
+you want</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">rails</span> <span class="n">g</span> <span class="n">model</span> <span class="no">FriendshipProfile</span> <span class="ss">friendship</span><span class="p">:</span><span class="n">belongs_to</span> <span class="n">meeting_location</span><span class="ss">:string</span> <span class="n">meeting_latitude</span><span class="ss">:float</span> <span class="n">meeting_longitude</span><span class="ss">:float</span>
+<span class="n">rake</span> <span class="ss">db</span><span class="p">:</span><span class="n">migrate</span>
+</pre></div>
+
+<p>Then, in your Popular model, just set the <code>friendship_profile</code> option to true:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">popular</span> <span class="n">friendship_profile</span><span class="p">:</span> <span class="kp">true</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Now, everytime a <code>friendship</code> is created, an accompanying <code>friendship_profile</code> will be attached to it, allowing you to define
+as many custom attributes as you wish in a separate table</p>
+
 <h2>
 <a name="related-gems" class="anchor" href="#related-gems"><span class="octicon octicon-link"></span></a>Related gems</h2>
 
