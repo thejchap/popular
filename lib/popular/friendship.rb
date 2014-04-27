@@ -6,7 +6,8 @@ module Popular
     belongs_to :friend, polymorphic: true
     has_one :friendship_profile
 
-    validates_uniqueness_of :friend_id, scope: :popular_model_id
+    validates :friend_id,
+      uniqueness: { scope: [:popular_model_type, :popular_model_id, :friend_type] }
     validates_presence_of :friend, :popular_model
 
     # Ensures that popular_models cannot add themselves as a friend
