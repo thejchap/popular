@@ -152,6 +152,13 @@ If Popular isn't quite what you're looking for, here are some other useful gems 
 Popular was heavily inspired by this screencast: ( http://railscasts.com/episodes/163-self-referential-association?view=asciicast )
 
 
+## Plans for the future
+- Add generator for entire `Frienship` resource that includes FriendshipsController, routes, etc
+- More aliases
+- Define your own `FriendshipProfile` class
+- Callbacks for `befriended` or `followed`
+
+
 
 ## Contributing
 
