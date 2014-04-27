@@ -48,7 +48,7 @@ module Popular
     #   user.friends_with? other_user #=> true
     def befriend new_friend
       run_callbacks :befriend do
-        friendships.create friend: new_friend
+        friendships.create friend_id: new_friend.id, friend_type: new_friend.class.name
       end
     end
 
@@ -65,7 +65,7 @@ module Popular
     #   user.friends_with? other_user # => true
     def befriend! new_friend
       run_callbacks :befriend do
-        friendships.create! friend: new_friend
+        friendships.create! friend_id: new_friend.id, friend_type: new_friend.class.name
       end
     end
 
@@ -82,7 +82,10 @@ module Popular
     #   user.friends_with? other_user # => false
     def unfriend friend
       run_callbacks :unfriend do
-        friendships.where( friend: friend ).first.destroy
+        friendships
+        .where( friend_type: friend.class.name )
+        .where( friend_id: friend.id )
+        .first.destroy
       end
     end
 
