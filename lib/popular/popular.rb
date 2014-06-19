@@ -158,10 +158,10 @@ module Popular
       #
       #   class User < ActiveRecord::Base
       #     popular
-      #     after_unfriend :do_something_amazing
+      #     after_unfriend 'do_something_amazing value'
       #
-      #     def do_something_amazing
-      #       puts name
+      #     def do_something_amazing(friendship)
+      #       puts "#{name} unfriended #{friendship.friend.name}"
       #     end
       #   end
       #
@@ -169,7 +169,7 @@ module Popular
       #   another_user = User.create name: "Jenny"
       #
       #   user.befriend another_user
-      #   user.unfriend another_user #=> "Justin"
+      #   user.unfriend another_user #=> "Justin unfriended Jenny"
       def after_unfriend *args, &blk
         set_callback :unfriend, :after, *args, &blk
       end
@@ -226,17 +226,17 @@ module Popular
       #
       #   class User < ActiveRecord::Base
       #     popular
-      #     after_befriend :do_something_amazing
+      #     after_befriend 'do_something_amazing value'
       #
-      #     def do_something_amazing
-      #       puts name
+      #     def do_something_amazing(friendship)
+      #       puts '#{name} friended #{friendship.friend.nanme}'
       #     end
       #   end
       #
       #   user = User.create name: "Justin"
       #   another_user = User.create name: "Jenny"
       #
-      #   user.befriend another_user #=> "Justin"
+      #   user.befriend another_user #=> "Justin friended Jenny"
       def after_befriend *args, &blk
         set_callback :befriend, :after, *args, &blk
       end
