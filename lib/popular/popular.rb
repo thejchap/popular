@@ -7,14 +7,14 @@ module Popular
 
     included do |base|
       has_many :followings, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
-      has_many :followeds, through: :followings, source: :friend, source_type: base
+      has_many :followeds, through: :followings, source: :friend, source_type: base.to_s
       has_many :inverse_followings, class_name: 'Popular::Friendship', as: :friend, foreign_key: :friend_id
-      has_many :followers, through: :inverse_followings, source: :popular_model, source_type: base
+      has_many :followers, through: :inverse_followings, source: :popular_model, source_type: base.to_s
 
       has_many :friendships, class_name: 'Popular::Friendship', as: :popular_model, dependent: :destroy
-      has_many :friends, through: :friendships, source_type: base
+      has_many :friends, through: :friendships, source_type: base.to_s
       has_many :inverse_friendships, class_name: 'Popular::Friendship', as: :friend, foreign_key: :friend_id
-      has_many :inverse_friends, through: :inverse_friendships, source: :popular_model, source_type: base
+      has_many :inverse_friends, through: :inverse_friendships, source: :popular_model, source_type: base.to_s
 
       include ActiveSupport::Callbacks
       define_callbacks :befriend, :unfriend
@@ -37,7 +37,7 @@ module Popular
     end
 
     # Adds a friend to an instance's friend's list
-    # 
+    #
     # @param [Object] new_friend a popular_model that the instance is not already friends with
     #
     # @example
@@ -54,7 +54,7 @@ module Popular
 
     # Adds a friend to an instance's friend's list
     # Similar to .befriend, but will raise an error if the operation is not successful
-    # 
+    #
     # @param [Object] new_friend a popular_model that the instance is not already friends with
     #
     # @example
@@ -70,7 +70,7 @@ module Popular
     end
 
     # Removes a friend from an instance's friend's list
-    # 
+    #
     # @param [Object] friend a popular_model in this instance's friends list
     #
     # @example
@@ -90,7 +90,7 @@ module Popular
     end
 
     # Helper method for determining whether instances are mutual friends
-    # 
+    #
     # @param [Object] popular_model
     # @return [Boolean] if both instances have befriended eachother
     #
@@ -108,10 +108,10 @@ module Popular
 
     # Helper method for finding whether or not the instance has befriended
     # another given popular_model
-    # 
-    # Helper method for finding whether or not the instance has 
+    #
+    # Helper method for finding whether or not the instance has
     # been befriended by another given popular_model
-    # 
+    #
     # @param [Object] popular_model
     # @return [Boolean] if the instance has been friended by another popular_model
     #
@@ -130,7 +130,7 @@ module Popular
 
     # Helper method for finding whether or not the instance has befriended
     # another given popular_model
-    # 
+    #
     # @param [Object] popular_model
     # @return [Boolean] if the instance has popular_model as a friend
     #
